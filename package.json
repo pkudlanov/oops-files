@@ -1,0 +1,24 @@
+{
+  "name": "oops-files",
+  "version": "1.0.0",
+  "description": "rename a large list of incorrectly named files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkudlanov/oops-files.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkudlanov/oops-files/issues"
+  },
+  "homepage": "https://github.com/pkudlanov/oops-files#readme",
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0"
+  }
+}
