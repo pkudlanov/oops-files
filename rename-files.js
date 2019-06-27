@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// const fileFolder = './test-files/';
+//const fileFolder = './test-files/';
 
 function getModifiedTime(filePath, callback) {
     fs.stat(filePath, (err, stats) => {
@@ -8,16 +8,28 @@ function getModifiedTime(filePath, callback) {
     });
 }
 
-// function fileRename(oldPath, newName, callback) {
+function fileRename(directory, callback) {
 
-//     fs.readdir('./test-files', { encoding: 'utf8' }, (err, files) => {
-//         for(const file of files) {
-//             fs.rename(`${fileFolder}${file}`, `${fileFolder}/some_other_file.txt`, err => {
-//                 if(err) console.error(err);
-//                 console.log(`${fileFolder}${files[20]}`);
-//             });
-//         }
-//     });
-// }
+    fs.readdir(directory, { encoding: 'utf8' }, (err, files) => {
+        if(err) return callback(err);
+        let renamedFiles = 0;
 
-module.exports = { getModifiedTime };
+        for(const file of files) {
+            fs.readFile(`${directory}${file}`, (err, fileContent) => {
+                if(err) return callback(err);
+
+                getModifiedTime(`${directory}${file}`, (err, modifiedTime) => {
+                    if(err) return callback(err);
+                    const number = file.split('.')[0];
+                    fs.rename(`${directory}${file}`, `${directory}${fileContent}-${number}-${modifiedTime}`, err => {
+                        if(err) return callback(err);
+                        renamedFiles++;
+                        if(renamedFiles === files.length) callback();
+                    });
+                });
+            });
+        }
+    });
+}
+
+module.exports = { getModifiedTime, fileRename }; 
