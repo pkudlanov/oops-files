@@ -1,12 +1,12 @@
-// const fs = require('fs');
+const fs = require('fs');
 
 // const fileFolder = './test-files/';
 
-// function readDirectory(directory, callback) {
-//     fs.readdir(directory, (err, files) => {
-//         callback(err, files);
-//     });
-// }
+function getModifiedTime(filePath, callback) {
+    fs.stat(filePath, (err, stats) => {
+        callback(err, stats && stats.mtime.toISOString());
+    });
+}
 
 // function fileRename(oldPath, newName, callback) {
 
@@ -20,4 +20,4 @@
 //     });
 // }
 
-// module.exports = { readDirectory, fileRename }
+module.exports = { getModifiedTime };

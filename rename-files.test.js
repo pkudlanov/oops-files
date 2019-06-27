@@ -1,7 +1,7 @@
 //const fs = require('fs');
 const { createFiles } = require('./create-files');
 const { deleteFiles } = require('./delete-files');
-//const { renameFiles } = require('./rename-files');
+const { getModifiedTime } = require('./rename-files');
 
 const directory = './test-files/';
 
@@ -14,8 +14,11 @@ describe('testing rename function', () => {
         deleteFiles(directory, done);
     });
 
-    it('get the last modified date of a file', () => {
-        const result = 'result';
-        expect(result).toEqual('result');
+    it('get the last modified date of a file', done => {
+        getModifiedTime(`${directory}1.txt`, (err, modifiedTime) => {
+            expect(err).toBeFalsy();
+            expect(modifiedTime).toEqual(expect.any(String));
+            done();
+        });
     });
 });
