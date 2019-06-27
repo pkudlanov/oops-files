@@ -20,9 +20,4 @@ describe('testingg deleting files function', () => {
             });
         });
     });
-
-    it('test test', () => {
-        const result = 'result';
-        expect(result).toEqual('result');
-    });
 });
