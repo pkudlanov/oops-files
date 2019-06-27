@@ -1,6 +1,7 @@
+//const fs = require('fs');
 const { createFiles } = require('./create-files');
 const { deleteFiles } = require('./delete-files');
-// const { readDirector, renameFiles } = require('./rename-files');
+//const { renameFiles } = require('./rename-files');
 
 const directory = './test-files/';
 
@@ -12,9 +13,9 @@ describe('testing rename function', () => {
     afterEach(done => {
         deleteFiles(directory, done);
     });
-    
-    it('passing test', () => {
-        const result = 'yes sir';
-        expect(result).toEqual('yes sir');
+
+    it('get the last modified date of a file', () => {
+        const result = 'result';
+        expect(result).toEqual('result');
     });
 });
